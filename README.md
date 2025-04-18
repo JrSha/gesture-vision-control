@@ -1,4 +1,17 @@
-# Welcome to your Lovable project
+# Vision-Based Gesture Control for Human-Robot Interaction in Unity
+
+A web interface that demonstrates gesture-based control for robot simulations in Unity using computer vision.
+
+## Key Features
+
+- **Live Camera Feed** - Capture webcam input for gesture recognition
+- **Gesture Detection** - Simulated detection of hand gestures (would use OpenCV/MediaPipe in a real deployment)
+- **Unity Connectivity** - Interface for connecting to a Unity simulation environment
+- **Control Panel** - Adjust sensitivity, thresholds, and other system parameters
+- **Technical Documentation** - Explains how Python/OpenCV would integrate with the system
+- **Modern UI** - Sleek, technical interface with real-time feedback
+
+The system architecture shows how computer vision (Python/OpenCV) would be used to detect gestures from a camera feed, which would then be sent to Unity for controlling a robot simulation.
 
 ## Project info
 
