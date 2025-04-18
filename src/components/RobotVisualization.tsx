@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
-  Robot, 
+  Bot, 
   Move, 
   HandMetal, 
   RotateCcw,
@@ -95,7 +95,7 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
     <Card className="w-full max-w-3xl bg-card/80 backdrop-blur-sm border-tech-cyan/20 shadow-lg shadow-tech-glow/10">
       <CardHeader className="pb-2 flex flex-row justify-between items-center">
         <CardTitle className="text-xl font-mono flex items-center gap-2">
-          <Robot className="h-5 w-5 text-tech-cyan" />
+          <Bot className="h-5 w-5 text-tech-cyan" />
           Robot Control
         </CardTitle>
         {lastAction && (
@@ -123,7 +123,7 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
                 transition: 'all 0.3s ease-out'
               }}
             >
-              <Robot className="h-10 w-10 text-tech-cyan" />
+              <Bot className="h-10 w-10 text-tech-cyan" />
               {/* Direction indicator */}
               <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-4 w-4 bg-tech-cyan"></div>
             </div>
