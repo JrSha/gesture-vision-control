@@ -1,6 +1,4 @@
-# Vision-Based Gesture Control for Human-Robot Interaction in Unity
-
-A web interface that demonstrates gesture-based control for robot simulations in Unity using computer vision.
+# Vision-Based Gesture Control for Human-Robot Interaction 
 
 ## Key Features
 
@@ -10,22 +8,6 @@ A web interface that demonstrates gesture-based control for robot simulations in
 - **Control Panel** - Adjust sensitivity, thresholds, and other system parameters
 - **Technical Documentation** - Explains how Python/OpenCV would integrate with the system
 - **Modern UI** - Sleek, technical interface with real-time feedback
-
-The system architecture shows how computer vision (Python/OpenCV) would be used to detect gestures from a camera feed, which would then be sent to Unity for controlling a robot simulation.
-
-## Project info
-
-**URL**: https://lovable.dev/projects/e18fc6b1-a177-4c8a-8b8c-ccb627136c45
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/e18fc6b1-a177-4c8a-8b8c-ccb627136c45) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
 
 **Use your preferred IDE**
 
@@ -73,14 +55,4 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/e18fc6b1-a177-4c8a-8b8c-ccb627136c45) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
