@@ -23,10 +23,13 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
 }) => {
   const [robotPosition, setRobotPosition] = useState({ x: 0, y: 0, rotation: 0 });
   const [lastAction, setLastAction] = useState<string | null>(null);
+  const [isActive, setIsActive] = useState(false);
   
   // Map gestures to robot actions
   useEffect(() => {
     if (!latestGesture) return;
+    
+    setIsActive(true);
     
     // Process the gesture and update robot position
     switch (latestGesture) {
@@ -106,16 +109,22 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
         )}
       </CardHeader>
       <CardContent className="p-3">
-        <div className="relative rounded-md overflow-hidden bg-black/30 aspect-video flex items-center justify-center">
+        <div className="relative rounded-md overflow-hidden bg-black/50 aspect-video flex items-center justify-center">
           {/* Robot visualization area */}
           <div className="absolute w-full h-full border-2 border-tech-cyan/30 rounded-md">
             {/* Grid lines for visual reference */}
-            <div className="absolute w-full h-[1px] top-1/2 bg-tech-cyan/20"></div>
-            <div className="absolute h-full w-[1px] left-1/2 bg-tech-cyan/20"></div>
+            <div className="absolute w-full h-[1px] top-1/2 bg-tech-cyan/30"></div>
+            <div className="absolute h-full w-[1px] left-1/2 bg-tech-cyan/30"></div>
+            
+            {/* Coordinate markers */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 text-xs text-tech-cyan/70 mt-1">Y+</div>
+            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-xs text-tech-cyan/70 mb-1">Y-</div>
+            <div className="absolute left-0 top-1/2 transform -translate-y-1/2 text-xs text-tech-cyan/70 ml-1">X-</div>
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 text-xs text-tech-cyan/70 mr-1">X+</div>
             
             {/* Robot representation */}
             <div 
-              className="absolute w-20 h-20 bg-tech-cyan/30 border-2 border-tech-cyan rounded-md flex items-center justify-center"
+              className={`absolute w-24 h-24 bg-tech-cyan/40 border-2 border-tech-cyan rounded-md flex items-center justify-center shadow-md shadow-tech-cyan/30 ${isActive ? 'animate-pulse' : ''}`}
               style={{ 
                 top: `calc(50% + ${robotPosition.y}px)`, 
                 left: `calc(50% + ${robotPosition.x}px)`,
@@ -123,10 +132,23 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
                 transition: 'all 0.3s ease-out'
               }}
             >
-              <Bot className="h-10 w-10 text-tech-cyan" />
+              <Bot className="h-12 w-12 text-tech-cyan" />
               {/* Direction indicator */}
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-4 w-4 bg-tech-cyan"></div>
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-5 w-5 bg-tech-cyan rounded-full"></div>
             </div>
+            
+            {/* Robot trail/path visualization (optional) */}
+            {isActive && (
+              <div 
+                className="absolute w-6 h-6 rounded-full bg-tech-cyan/10 border border-tech-cyan/20"
+                style={{ 
+                  top: `calc(50% + ${robotPosition.y}px)`, 
+                  left: `calc(50% + ${robotPosition.x}px)`,
+                  transform: `translate(-50%, -50%)`,
+                  transition: 'all 0.1s ease-out'
+                }}
+              ></div>
+            )}
           </div>
           
           {/* Current action display */}
@@ -140,8 +162,8 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
           )}
           
           {/* Instructions */}
-          {!latestGesture && (
-            <div className="text-center text-muted-foreground max-w-xs">
+          {!isActive && (
+            <div className="text-center text-tech-cyan max-w-xs z-10">
               <HandMetal className="h-10 w-10 mx-auto mb-2 text-tech-cyan opacity-60" />
               <p className="text-sm">Use hand gestures to control the robot:</p>
               <ul className="text-xs mt-2 space-y-1 text-left mx-auto w-fit">
@@ -155,8 +177,9 @@ const RobotVisualization: React.FC<RobotVisualizationProps> = ({
           )}
         </div>
         
-        <div className="mt-3 text-xs text-muted-foreground">
+        <div className="mt-3 text-xs text-tech-cyan/70">
           <p>Perform gestures in the camera feed to control the robot in real-time</p>
+          <p className="mt-1 text-tech-cyan/50">Current position: X: {robotPosition.x}, Y: {robotPosition.y}, Rotation: {robotPosition.rotation}°</p>
         </div>
       </CardContent>
     </Card>
